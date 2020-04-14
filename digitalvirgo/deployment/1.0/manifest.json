@@ -1,0 +1,7 @@
+{
+    "copy-from-package": {
+        ".env.prod": ".env.prod",
+        ".env.stage": ".env.stage",
+        "deployment.json": "deployment.json"
+    }
+}
