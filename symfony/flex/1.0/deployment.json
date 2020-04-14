@@ -1,0 +1,58 @@
+{
+  "version": "0.0.0",
+  "applications": [
+    {
+      "name": "symfony-base-www",
+      "moduleName": "symfony-base-www",
+      "applicationType": "FRONTEND",
+      "groupId": "pl.digitalvirgo",
+      "artifactId": "symfony-base-www",
+      "dockerImageId": "digitalvirgo/frontend:php-7.2",
+      "build": {
+        "BASE": {
+          "outputPath": ""
+        },
+        "PRODUCTION": {
+          "cmdBuild": "install --no-dev --optimize-autoloader",
+          "copy": {
+            "beforeBuild": [
+              {
+                "source": ".env.prod",
+                "target": ".env.local"
+              }
+            ]
+          }
+        },
+        "STAGING": {
+          "cmdBuild": "install --no-dev",
+          "copy": {
+            "beforeBuild": [
+              {
+                "source": ".env.stage",
+                "target": ".env.local"
+              }
+            ]
+          }
+        }
+      },
+      "configuration": {
+        "PRIMARY_PRODUCTION": {
+          "systemProperties": {},
+          "cpus": 0.05,
+          "mem": 256,
+          "healthCheckPath": "/",
+          "rootDir": "public"
+        },
+        "PRIMARY_STAGING": {
+          "systemProperties": {},
+          "cpus": 0.05,
+          "mem": 128,
+          "healthCheckPath": "/",
+          "rootDir": "public"
+        }
+      },
+      "buildPropertiesPrefix": "webapp",
+      "instances": 1
+    }
+  ]
+}
