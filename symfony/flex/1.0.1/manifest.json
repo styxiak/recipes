@@ -1,8 +1,0 @@
-{
-    "copy-from-recipe": {
-        ".env": ".env",
-        ".env.prod": ".env.prod",
-        ".env.stage": ".env.stage",
-        "deployment.json": "deployment.json"
-    }
-}
